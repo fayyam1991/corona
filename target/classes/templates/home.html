@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<head>
+<title>CoronaVirus Tracker Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div class="container">
+
+		<h1>Coronavirus Tracker Application</h1>
+		<p>This application lists the current number of cases reported
+			across the globe!</p>
+
+		<div class="jumbotron">
+			<h1 class="display-4" th:text="${totalNoOfCases}"></h1>
+			<p class="lead">Total number of cases reported as of day.</p>
+		</div>
+
+		<table class="table">
+			<tr>
+				<th>State</th>
+				<th>Country</th>
+				<th>Total cases reported</th>
+				<th>Change since last day</th>
+			</tr>
+			<tr th:each="locationStats : ${allStats}">
+				<td th:text="${locationStats.state}"></td>
+				<td th:text="${locationStats.country}"></td>
+				<td th:text="${locationStats.latestReportedCases}"></td>
+				<td th:text="${locationStats.diffFromPrevDay}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+<div class="shadow p-3 mb-5 bg-white rounded">Copyright © 2020 Md Fayyam. All Rights Reserved</div>
+
+</html>
